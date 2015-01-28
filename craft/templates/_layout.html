@@ -1,0 +1,53 @@
+{#
+ # Layout template
+ # ---------------
+ #
+ # This template defines your site’s global layout. It can be
+ # “extended” by other templates to fill in the gaps.
+ #
+ # See Twig’s Template Inheritance documentation for more details:
+ # http://twig.sensiolabs.org/doc/templates.html#template-inheritance
+ #}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+	<meta charset="utf-8" />
+	<title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
+	<link rel="home" href="{{ siteUrl }}" />
+	<link rel="stylesheet" type="text/css" href="../public/css/weebeastie.css" /> 
+</head>
+
+<body>
+	<div id="container">
+		<header id="header">
+			<a href="{{ siteUrl }}" id="logo">
+				<img src="/public/img/beastie-header.png" class="headerBeasties">
+				<img src="/public/img/WeeBeastie-wordmark.png" class="wordmark">
+			</a>
+			<nav>
+				<ul>
+					<li><a href="{{ url('work') }}" {% if craft.request.firstSegment == 'work' %}class="active"{% endif %}>our work</a></li>
+					<li><a href="{{ url('directors') }}" {% if craft.request.firstSegment == 'directors' %}class="active"{% endif %}>directors</a></li>
+					<li><a href="{{ url('about') }}" {% if craft.request.firstSegment == 'about' %}class="active"{% endif %}>about us</a></li>
+					<li><a href="{{ url('news') }}" {% if craft.request.firstSegment == 'news' %}class="active"{% endif %}>news</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main id="content" role="main">
+			{% block content %}
+				<p>If you see me, you haven’t set your <code>{% verbatim %}{% block content %}…{% endblock %}{% endverbatim %}</code> yet.</p>
+				<p>See Twig’s <a href="http://twig.sensiolabs.org/doc/templates.html#template-inheritance">Template Inheritance</a> documentation for an explanation.</p>
+			{% endblock %}
+		</main>
+	</div>
+	<footer id="footer">
+		<div id="container">
+			<span>{{ contact.address }}</span> | <span><span class="abrv">(p)</span> {{ contact.phone }}</span> | <span><span class="abrv">(f)</span> {{ contact.fax }}</span> | <span><a href="mailto:{{ contact.email }}">{{ contact.email }}</a></span>
+			<img src="/public/img/beastie-footer.png" class="footerBeasties">
+		</div>
+	</footer>
+	</div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+{# Directors index template #}
+
+{% extends "_layout" %}
+{% set title = "Work" %}
+
+{% block content %}
+
+	<section id="directors">
+		{% for entry in craft.entries.section('directors').order('postDate asc') %}
+			<div class="director">
+				<h3>{{ entry.title }}</h3>
+				<div class="directorVideos">
+					<div class="workItem">
+						<img src="/public/video/screenshot/screenshot-test.jpeg">
+					</div>
+					<div class="workItem">
+						<img src="/public/video/screenshot/screenshot-test.jpeg">
+					</div>
+					<div class="workItem">
+						<img src="/public/video/screenshot/screenshot-test.jpeg">
+					</div>
+				</div>
+				<a href="{{ entry.url }}" class="viewAll"><h4>View All</h4><img src="/public/img/arrow.png"></a>
+			</div>
+		{% endfor %}
+	</section>
+
+{% endblock %}

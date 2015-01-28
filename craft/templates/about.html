@@ -1,0 +1,35 @@
+{# About Page template #}
+
+{% extends "_layout" %}
+
+{% block content %}
+
+	{% for entry in craft.entries.section('about') %}
+		<section id="about">
+			<div class="companyGeneral">
+				{% set image = entry.companyPhoto.first() %}
+				<img src="{{ image.getUrl() }}" alt="">
+				{{ entry.aboutTheCompany }}
+			</div>
+			<div class="companyPartners">
+				<div class="partner">
+					<h1><span>Monica</span> Hinden</h1>
+					{{ entry.monicaHindenBio }}
+				</div>
+				<div class="partner">
+					<h1><span>Chris</span> McKenna</h1>
+					{{ entry.chrisMckennaBio }}
+				</div>
+			</div>
+			<div class="whatIsDivider">
+				<img src="/public/img/copy-whatis.png" class="whatIs">
+			</div>
+			<div class="whatIsAWeeBeastie">
+				<img src="/public/img/beastie-about.png" class="aboutBeastie">
+				<div class="whatIsText">
+					{{ entry.whatIsAWeeBeastie }}
+				</div>
+			</div>
+		</section>
+	{% endfor %}
+{% endblock %}
