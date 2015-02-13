@@ -1,13 +1,4 @@
-{#
- # Layout template
- # ---------------
- #
- # This template defines your site’s global layout. It can be
- # “extended” by other templates to fill in the gaps.
- #
- # See Twig’s Template Inheritance documentation for more details:
- # http://twig.sensiolabs.org/doc/templates.html#template-inheritance
- #}
+{# Layout template #}
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
@@ -16,6 +7,26 @@
 	<title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
 	<link rel="home" href="{{ siteUrl }}" />
 	<link rel="stylesheet" type="text/css" href="../public/css/weebeastie.css" /> 
+	
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	
+	<script src="//use.typekit.net/uvl5qdh.js"></script>
+	<script>try{Typekit.load();}catch(e){}</script>
+	
+	<script src="/public/js/modernizr.custom.99139.js"></script>
+	
+	<link href="/public/css/video-js.css" rel="stylesheet">
+	<script src="/public/js/video.js"></script>
+	<script>
+	  videojs.options.flash.swf = "http://example.com/path/to/video-js.swf"
+	</script>
+	
+	<script type="text/javascript">
+	  document.createElement('video');document.createElement('audio');document.createElement('track');
+	</script>
+	
+	<link href="/public/css/flexslider.css" rel="stylesheet">
+	<script src="/public/js/jquery.flexslider-min.js"></script>
 </head>
 
 <body>
@@ -44,10 +55,14 @@
 	</div>
 	<footer id="footer">
 		<div id="container">
-			<span>{{ contact.address }}</span> | <span><span class="abrv">(p)</span> {{ contact.phone }}</span> | <span><span class="abrv">(f)</span> {{ contact.fax }}</span> | <span><a href="mailto:{{ contact.email }}">{{ contact.email }}</a></span>
 			<img src="/public/img/beastie-footer.png" class="footerBeasties">
+			<ul>	
+				<li>{{ contact.address }}</li> 
+				<li><span class="abrv">(p)</span> {{ contact.phone }}</li>
+				<li><span class="abrv">(f)</span> {{ contact.fax }}</li>
+				<li><a href="mailto:{{ contact.email }}">{{ contact.email }}</a></li>
+			</ul>
 		</div>
 	</footer>
-	</div>
 </body>
 </html>

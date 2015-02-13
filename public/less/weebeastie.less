@@ -8,8 +8,42 @@
 @black: #000;
 @blue: #009CDC;
 @gold: #e6d9af;
+@orange: #ef6539;
 @gray: lighten(@black, 50%);
 @lightgray: rgb(212, 212, 212);
+
+@font-face {
+  font-family: 'Mercury';
+  src: url('public/fonts/mercurybold.eot'); /* IE9 Compat Modes */
+  src: url('public/fonts/mercurybold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('public/fonts/mercurybold.woff2') format('woff2'), /* Super Modern Browsers */
+       url('public/fonts/mercurybold.woff') format('woff'), /* Pretty Modern Browsers */
+       url('public/fonts/mercurybold.ttf')  format('truetype'), /* Safari, Android, iOS */
+}
+
+.BasicGothicReg {
+	font-family: "Mercury","ff-basic-gothic-web-pro",sans-serif;
+	font-style: normal;
+	font-weight: 300;
+}
+
+.BasicGothicMed {
+	font-family: "ff-basic-gothic-web-pro",sans-serif;
+	font-style: normal;
+	font-weight: 500;
+}
+
+.BasicGothicBold {
+	font-family: "ff-basic-gothic-web-pro",sans-serif;
+	font-style: normal;
+	font-weight: 700;
+}
+
+.EuropaReg {
+	font-family: "europa",sans-serif;
+	font-style: normal;
+	font-weight: 400;
+}
 
 /* -------------------------------------------------------------------------------- */
 // BASIC
@@ -40,6 +74,10 @@ img {
 	max-width: 100%;
 }
 
+video {
+	max-width: 100%;
+}
+
 
 /* -------------------------------------------------------------------------------- */
 // BASIC MISC.
@@ -51,6 +89,84 @@ img {
 	@media (max-width: @medium) {
 		width: 100%;
 		padding: 0 1em;
+	}
+}
+
+.dropdown {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background: #fff;
+	font-family: 'Helvetica', Arial, sans-serif;
+	font-size: 1em;
+	font-weight: normal;
+	line-height: 1em;
+	padding: .75em .5em .5em;
+	border: 1px solid @lightgray;
+	border-radius: 0;
+	margin: 1em 0;
+	outline: none;
+	width: 200px;
+	background-image: url('/public/img/icon-selectArrow.png');
+	background-repeat: no-repeat;
+	background-position: right center;
+}
+
+/* -------------------------------------------------------------------------------- */
+// VIDEO STUFF
+
+.video {
+	width: 100%;
+	height: auto;
+	position: relative;
+	#video_fullwidth,
+	#video_fullwidth_clone {
+		width: 100% !important;
+		height: 0 !important;
+		padding-bottom: 56.2%;
+	}
+	.video-info {
+		position: absolute;
+		left: 1em;
+		top: 1em;
+		color: #fff;
+		opacity: 0;
+		h1 {
+			font-size: 2.75em;
+			line-height: 1em;
+			color: #fff;
+			text-shadow: 0px 2px 1px #333;
+			margin: 0;
+			display: block;
+			visibility: visible;
+		}
+		h3 {
+			font-size: 1.3125em;
+			line-height: 1.142857143em;
+			font-weight: normal;
+			font-style: italic;
+			color: #e6d9af;
+			text-shadow: 0px 0px 3px #333;
+			margin: 0;
+			display: block;
+			visibility: visible;
+		}
+	}
+	&:hover {
+		.video-info {
+			opacity: 1;
+		}
+	}
+}
+
+#videoPlayer {
+	display: none;
+	margin-bottom: 2em;
+	#video_fullwidth,
+	#video_fullwidth_clone {
+		width: 100% !important;
+		height: 0 !important;
+		padding-bottom: 56.2%;
 	}
 }
 
@@ -80,18 +196,75 @@ img {
 	}
 	nav {
 		float: right;
-		font-size: 1.3em;
-		letter-spacing: 2px;
+		font-size: 1.4em;
+		letter-spacing: -.02em;
 		ul {
 			list-style-type: none;
+			overflow: hidden;
+			padding: 0;
 			li {
 				float: left;
 				margin-left: 1em;
+				.BasicGothicReg();
+				letter-spacing: -.02em;
+				&:first-child {
+					margin-left: 0;
+				}
+				a.active {
+					background: url('/public/img/icon-underline.png') no-repeat;
+					background-position: 0 1.5em;
+					cursor: default;
+					height: 35px;
+					width: auto;
+					display: inline-block;
+				}
+				&:nth-child(1) a.active {
+					background-position: .3em 1.25em;
+				}
+				&:nth-child(2) a.active {
+					background-position: .33em 1.25em;
+				}
+				&:nth-child(3) a.active {
+					background-position: .15em 1.25em;
+				}
+				&:nth-child(4) a.active {
+					background-position: -3.75em 1.25em;
+				}
 			}
 		}
 	}
+	@media (max-width: 730px) {
+		border-bottom: 1px solid @lightgray;
+		#logo {
+			float: none;
+		}
+		nav {
+			float: none;
+			display: block;
+			li {
+				width: 22%;
+				margin: 0;
+				text-align: center;
+			}
+		}
+	}
+	@media (max-width: 560px) {
+		font-size: .8em;
+	}
+	@media (max-width: 450px) {
+		font-size: .7em;
+	}
 }
 
+/* -------------------------------------------------------------------------------- */
+// HOME
+
+#homepage-slideshow {
+	margin-bottom: 5em;
+	@media (max-width: @small) {
+		margin-bottom: 8em;
+	}
+}
 
 /* -------------------------------------------------------------------------------- */
 // WORK
@@ -292,6 +465,59 @@ img {
 	}
 }
 
+
+/* -------------------------------------------------------------------------------- */
+// NEWS
+
+.newsVideo {
+	width: 34%;
+}
+
+#news {
+	article {
+		overflow: hidden;
+		margin-bottom: 2em;
+		&:nth-of-type(odd) {
+			.newsVideo {
+				float: left;
+				margin-right: 2em;
+			}
+		}
+		&:nth-of-type(even) {
+			.newsVideo {
+				float: right;
+				margin-left: 2em;
+			}
+		}
+		.newsDate {
+			color: @blue;
+			font-weight: 200;
+			margin-bottom: .5em;
+		}
+		.newsText {
+			p:first-child {
+				margin-top: 0;
+			}
+		}
+	}
+	.groupDate {
+		color: @orange;
+		margin-bottom: 0;
+		border-top: 1px solid @lightgray;
+		padding-top: 1.5em;
+	}
+	@media (max-width: @small) {
+		article {
+			.newsVideo {
+				float: none !important;
+				width: 100%;
+				margin: 0 0 1em !important;
+			}
+		}
+	}
+}
+
+
 /* -------------------------------------------------------------------------------- */
 // FOOTER
 
@@ -301,14 +527,31 @@ img {
 	padding: 1em 0 0;
 	font-weight: 100;
 	font-size: .9em;
-	span {
-		margin: 0 .5em;
-		&.abrv {
-			margin: 0;
-			color: @blue;
-		}
-		&:first-child {
-			margin-left: 0;
+	.container {
+		position: relative;
+	}
+	ul {
+		list-style-type: none;
+		padding: 0;
+		margin: 0;
+		li {
+			margin: 0 .5em;
+			float: left;
+			.abrv {
+				margin: 0;
+				color: @blue;
+			}
+			&:after {
+				content: "|";
+				margin-left: 1em;
+			}
+			&:first-child {
+				margin-left: 0;
+			}
+			&:last-child::after {
+				content: "";
+				margin-left: 0;
+			}
 		}
 	}
 	a {
@@ -322,6 +565,15 @@ img {
 		top: -4em;
 		width: auto;
 		float: right;
+	}
+	@media (max-width: 550px) {
+		margin-top: 5em;
+		.footerBeasties {
+			left: 0;
+			right: inherit;
+			float: left;
+			margin-bottom: -3em;
+		}
 	}
 }
 

@@ -4,14 +4,24 @@
 {% set title = "News" %}
 
 {% block content %}
-	<h1>News</h1>
 
-	{% for entry in craft.entries.section('news').find() %}
-		<article>
-			<h3><a href="{{ entry.url }}">{{ entry.title }}</a></h3>
-			<p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
-			{{ entry.body.getPage(1) }}
-			<p><a href="{{ entry.url }}">Continue reading</a></p>
-		</article>
-	{% endfor %}
+	<section id="news">
+
+		{% for date, entries in craft.entries.section('news').find() | group("postDate|date('F Y')") %}
+			<h3 class="groupDate">{{ date }}</h3>
+			{% for entry in entries %}
+			<article>
+				<h4 class="newsDate">{{ entry.postDate.format('n.d.Y') }}</h4>
+				<div class="newsVideo">
+					<img src="/public/video/screenshot/screenshot-test.jpeg">
+				</div>
+				<div class="newsText">
+					{{ entry.body }}
+				</div>
+			</article>
+			{% endfor %}
+		{% endfor %}
+	
+	</section>
+	
 {% endblock %}

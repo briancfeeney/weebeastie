@@ -5,56 +5,61 @@
 
 {% block content %}
 
+	<section id="videoPlayer">
+		{% for entry in craft.entries.section('work').find() %}
+			<video id="video_fullwidth" class="video-js vjs-default-skin topVideo {{ entry.id }}" preload="auto" controls volume="7" data-setup='{"example_option":true}'
+			poster="{% for image in entry.screenshot.limit(1) %}{{ image.getUrl() }}{% endfor %}">
+				{% for mp4 in entry.videoMP4 %}
+					<source src="{{ mp4.getUrl() }}" type="video/mp4">
+				{% endfor %}
+				{% for ogg in entry.videoOGG %}
+					<source src="{{ ogg.getUrl() }}" type="video/ogg">
+				{% endfor %}
+				Video not supported
+			</video>
+		{% endfor %}
+	</section>
+	
+	<select class="dropdown" id="dropdown">
+		<option style="display:none;" name="videotype">Show Only...</option>
+		{% set field = craft.fields.getFieldByHandle('videoCategory') %}
+		{% for opt in field.settings.options %}
+			<option name="fields[videoCategory][]" value="{{ opt.value }}">{{ opt.label }}</option>
+		{% endfor %}
+	</select>
+	
+	<script>			
+		$(document).on("change", "#dropdown", function(){
+			$(".workItem").hide();
+			$('.' + $(this).val()).show();
+			$("#videoPlayer").hide();
+		});
+	</script>
+
 	<section id="workGallery">
-		<div class="workItem">
-			<div class="workTitling">
-				<h1>Dish and AMC</h1>
-				<h2>The Walking Dead</h2>
+		{% for entry in craft.entries.section('work').find() %}
+			<div class="workItem {{ entry.videoCategory }} {{ entry.id }}">
+				<div class="workTitling">
+					<h1>{{ entry.client }}</h1>
+					<h2>{{ entry.projectName }}</h2>
+				</div>
+				{% for image in entry.screenshot.limit(1) %}
+					<img src="{{ image.getUrl() }}">
+				{% endfor %}
 			</div>
-			<img src="/public/video/screenshot/screenshot-test.jpeg">
-		</div>
-		<div class="workItem">
-			<div class="workTitling">
-				<h1>Dish and AMC</h1>
-				<h2>The Walking Dead</h2>
-			</div>
-			<img src="/public/video/screenshot/screenshot-test.jpeg">
-		</div>
-		<div class="workItem">
-			<div class="workTitling">
-				<h1>Dish and AMC</h1>
-				<h2>The Walking Dead</h2>
-			</div>
-			<img src="/public/video/screenshot/screenshot-test.jpeg">
-		</div>
-		<div class="workItem">
-			<div class="workTitling">
-				<h1>Dish and AMC</h1>
-				<h2>The Walking Dead</h2>
-			</div>
-			<img src="/public/video/screenshot/screenshot-test.jpeg">
-		</div>
-		<div class="workItem">
-			<div class="workTitling">
-				<h1>Dish and AMC</h1>
-				<h2>The Walking Dead</h2>
-			</div>
-			<img src="/public/video/screenshot/screenshot-test.jpeg">
-		</div>
-		<div class="workItem">
-			<div class="workTitling">
-				<h1>Dish and AMC</h1>
-				<h2>The Walking Dead</h2>
-			</div>
-			<img src="/public/video/screenshot/screenshot-test.jpeg">
-		</div>
-		<div class="workItem">
-			<div class="workTitling">
-				<h1>Dish and AMC</h1>
-				<h2>The Walking Dead</h2>
-			</div>
-			<img src="/public/video/screenshot/screenshot-test.jpeg">
-		</div>
+		{% endfor %}
+		
+		{% for entry in craft.entries.section('work').find() %}
+		<script>
+			$(window).load(function() {
+				$(".workItem.{{ entry.id }}").click(function() {
+					$("#videoPlayer").show();
+					$(".topVideo").hide();
+					$(".{{ entry.id }}").show();
+				});
+			});
+		</script>
+		{% endfor %}
 	</section>
 
 {% endblock %}
