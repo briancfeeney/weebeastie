@@ -5,24 +5,58 @@
 
 {% block content %}
 
+	<section id="videoPlayer">
+		{% for entry in craft.entries.section('work').find() %}
+			<video id="video_fullwidth" class="video-js vjs-default-skin topVideo {{ entry.id }}" preload="auto" controls volume="7" data-setup='{"example_option":true}'
+			poster="{% for image in entry.screenshot.limit(1) %}{{ image.getUrl() }}{% endfor %}">
+				{% for mp4 in entry.videoMP4 %}
+					<source src="{{ mp4.getUrl() }}" type="video/mp4">
+				{% endfor %}
+				{% for ogg in entry.videoOGG %}
+					<source src="{{ ogg.getUrl() }}" type="video/ogg">
+				{% endfor %}
+				Video not supported
+			</video>
+		{% endfor %}
+	</section>
+
 	<section id="directors">
 		{% for entry in craft.entries.section('directors').order('postDate asc') %}
 			<div class="director">
 				<h3>{{ entry.title }}</h3>
 				<div class="directorVideos">
-					<div class="workItem">
-						<img src="/public/video/screenshot/screenshot-test.jpeg">
-					</div>
-					<div class="workItem">
-						<img src="/public/video/screenshot/screenshot-test.jpeg">
-					</div>
-					<div class="workItem">
-						<img src="/public/video/screenshot/screenshot-test.jpeg">
-					</div>
+					{% set posts = craft.entries.find({section:'work', parentOf:entry}) %}
+					{% if posts | length %}
+				        {% for post in posts %}
+				            <div class="workItem {{ post.id }}">
+								{% for image in post.screenshot.limit(1) %}
+									<img src="{{ image.getUrl() }}">
+								{% endfor %}
+							</div>
+				        {% endfor %}
+					{% endif %}
 				</div>
 				<a href="{{ entry.url }}" class="viewAll"><h4>View All</h4><img src="/public/img/arrow.png"></a>
 			</div>
 		{% endfor %}
 	</section>
+	
+	{% for entry in craft.entries.section('work').find() %}
+	<script>
+		$(window).load(function() {
+			$(".workItem.{{ entry.id }}").click(function() {
+				$("#videoPlayer").slideDown("slow");
+				$(".topVideo").hide();
+				$(".{{ entry.id }}").slideDown("slow");
+				
+				$("#videoPlayer").animate({
+				    opacity: 1,
+				  }, 100, function() {
+				    // Animation complete.
+				});
+			});
+		});
+	</script>
+	{% endfor %}
 
 {% endblock %}

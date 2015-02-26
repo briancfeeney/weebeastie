@@ -129,10 +129,10 @@ html[xmlns] .flexslider .slides {
   content: url('/public/img/icon-nextArrow.png');
 }
 .flex-direction-nav .flex-prev {
-  left: 40%;
+  left: 35%;
 }
 .flex-direction-nav .flex-next {
-  right: 40%;
+  right: 35%;
   text-align: right;
 }
 .flexslider:hover .flex-direction-nav .flex-prev {
@@ -244,5 +244,43 @@ html[xmlns] .flexslider .slides {
   .flex-direction-nav .flex-next {
     opacity: 1;
     right: 10px;
+  }
+  .flex-direction-nav a {
+    top: 107%;
+  }
+}
+@media screen and (max-width: 700px) {
+  .flex-direction-nav a {
+    top: 108%;
+  }
+}
+@media screen and (max-width: 650px) {
+  .flex-direction-nav a {
+    top: 109%;
+  }
+}
+@media screen and (max-width: 580px) {
+  .flex-direction-nav a {
+    top: 110%;
+  }
+}
+@media screen and (max-width: 530px) {
+  .flex-direction-nav a {
+    top: 111%;
+  }
+}
+@media screen and (max-width: 505px) {
+  .flex-direction-nav a {
+    top: 112%;
+  }
+}
+@media screen and (max-width: 480px) {
+  .flex-direction-nav a {
+    top: 113%;
+  }
+}
+@media screen and (max-width: 450px) {
+  .flex-direction-nav a {
+    top: 115%;
   }
 }

@@ -22,23 +22,34 @@
 	
 	<select class="dropdown" id="dropdown">
 		<option style="display:none;" name="videotype">Show Only...</option>
+		<option name="showAll" value="showAll">Show All</option>
 		{% set field = craft.fields.getFieldByHandle('videoCategory') %}
 		{% for opt in field.settings.options %}
 			<option name="fields[videoCategory][]" value="{{ opt.value }}">{{ opt.label }}</option>
 		{% endfor %}
 	</select>
 	
+	<!-- <style>
+		.{{ entry.videoCategory }}:nth-child(3n) { margin-right: 0; }
+	</style> -->
+	
 	<script>			
 		$(document).on("change", "#dropdown", function(){
-			$(".workItem").hide();
-			$('.' + $(this).val()).show();
-			$("#videoPlayer").hide();
+			
+			if ($(this).val() == "showAll") {
+			    $(".workItem").fadeIn("slow").addClass("grid");
+		    } else  {
+		        $(".workItem").hide("fast").removeClass("grid");
+				$('.' + $(this).val()).fadeIn("slow").addClass("grid");
+				$("#videoPlayer").hide();
+		    }
+			
 		});
 	</script>
 
 	<section id="workGallery">
 		{% for entry in craft.entries.section('work').find() %}
-			<div class="workItem {{ entry.videoCategory }} {{ entry.id }}">
+			<div class="workItem {{ entry.videoCategory }} {{ entry.id }} grid">
 				<div class="workTitling">
 					<h1>{{ entry.client }}</h1>
 					<h2>{{ entry.projectName }}</h2>
@@ -46,16 +57,22 @@
 				{% for image in entry.screenshot.limit(1) %}
 					<img src="{{ image.getUrl() }}">
 				{% endfor %}
-			</div>
+			</div>			
 		{% endfor %}
 		
 		{% for entry in craft.entries.section('work').find() %}
 		<script>
 			$(window).load(function() {
 				$(".workItem.{{ entry.id }}").click(function() {
-					$("#videoPlayer").show();
+					$("#videoPlayer").slideDown("slow");
 					$(".topVideo").hide();
-					$(".{{ entry.id }}").show();
+					$(".{{ entry.id }}").slideDown("slow");
+
+					$("#videoPlayer").animate({
+					    opacity: 1,
+					  }, 100, function() {
+					    // Animation complete.
+					});
 				});
 			});
 		</script>

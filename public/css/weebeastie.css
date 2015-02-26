@@ -95,7 +95,7 @@ video {
 .video #video_fullwidth_clone {
   width: 100% !important;
   height: 0 !important;
-  padding-bottom: 56.2%;
+  padding-bottom: 56.4%;
 }
 .video .video-info {
   position: absolute;
@@ -129,18 +129,27 @@ video {
 }
 #videoPlayer {
   display: none;
+  opacity: 0;
   margin-bottom: 2em;
 }
 #videoPlayer #video_fullwidth,
 #videoPlayer #video_fullwidth_clone {
   width: 100% !important;
   height: 0 !important;
-  padding-bottom: 56.2%;
+  padding-bottom: 56.4%;
+}
+.video-js .vjs-tech {
+  background: #ffffff;
 }
 /* -------------------------------------------------------------------------------- */
 #header {
   margin: 1em 0 1.5em;
   overflow: hidden;
+  /*
+	@media (max-width: 450px) {
+		font-size: .7em;
+	}
+	*/
 }
 #header a {
   color: #000000;
@@ -212,7 +221,7 @@ video {
     display: block;
   }
   #header nav li {
-    width: 22%;
+    width: 21,5%;
     margin: 0;
     text-align: center;
   }
@@ -221,10 +230,21 @@ video {
   #header {
     font-size: .8em;
   }
-}
-@media (max-width: 450px) {
-  #header {
-    font-size: .7em;
+  #header nav ul li:nth-child(1) a.active {
+    background-position: 0 1.5em;
+    background-size: 114px 6px;
+  }
+  #header nav ul li:nth-child(2) a.active {
+    background-position: .0 1.5em;
+    background-size: 114px 6px;
+  }
+  #header nav ul li:nth-child(3) a.active {
+    background-position: .0 1.5em;
+    background-size: 114px 6px;
+  }
+  #header nav ul li:nth-child(4) a.active {
+    background-position: -4.1em 1.5em;
+    background-size: 114px 6px;
   }
 }
 /* -------------------------------------------------------------------------------- */
@@ -241,17 +261,14 @@ video {
   overflow: hidden;
 }
 .workItem {
-  width: 32.7%;
+  width: 32.45%;
   height: 0;
-  padding-bottom: 18.45%;
+  padding-bottom: 18.2%;
   float: left;
   margin-right: .5em;
   margin-bottom: .5em;
   background-color: #000000;
   position: relative;
-}
-.workItem:nth-child(3n) {
-  margin-right: 0;
 }
 @media (max-width: 960px) {
   .workItem {
@@ -432,6 +449,14 @@ video {
 .newsVideo {
   width: 34%;
 }
+.newsVideo .vjs-default-skin .vjs-big-play-button {
+  left: 25%;
+  top: 25%;
+  visibility: visible;
+}
+.newsVideo .vjs-default-skin .vjs-big-play-button:hover {
+  opacity: .8;
+}
 #news article {
   overflow: hidden;
   margin-bottom: 2em;
@@ -509,6 +534,11 @@ video {
   top: -4em;
   width: auto;
   float: right;
+}
+@media (max-width: 960px) {
+  #footer {
+    margin-top: 10em;
+  }
 }
 @media (max-width: 550px) {
   #footer {
