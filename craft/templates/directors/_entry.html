@@ -24,22 +24,19 @@
 		<em>{{ entry.workType }}</em>
 		{{ entry.body }}
 	</section>
-		
+	
 	<section id="workGallery">
-		{% set posts = craft.entries.find({section:'work', parentOf:entry}) %}
-		{% if posts | length %}
-	        {% for post in posts %}
-	            <div class="workItem {{ post.id }}">
-					<div class="workTitling">
-						<h1>{{ post.client }}</h1>
-						<h2>{{ post.projectName }}</h2>
-					</div>
-					{% for image in post.screenshot.limit(1) %}
-						<img src="{{ image.getUrl() }}">
-					{% endfor %}
+		{% for work in entry.videoSelection %}
+            <div class="workItem {{ work.id }}">
+				<div class="workTitling">
+					<h1>{{ work.client }}</h1>
+					<h2>{{ work.projectName }}</h2>
 				</div>
-	        {% endfor %}
-		{% endif %}
+				{% for image in work.screenshot.limit(1) %}
+					<img src="{{ image.getUrl() }}">
+				{% endfor %}
+			</div>
+        {% endfor %}
 	</section>
 	
 	{% for entry in craft.entries.section('work').find() %}
@@ -47,13 +44,17 @@
 		$(window).load(function() {
 			$(".workItem.{{ entry.id }}").click(function() {
 				$("#videoPlayer").slideDown("slow");
-				$(".topVideo").hide();
-				$(".{{ entry.id }}").slideDown("slow");
-				
+				$("html, body").animate({ scrollTop: 0 }, 600);
+				$(".topVideo").hide(function() {
+					$(this).children('#video_fullwidth_html5_api').get(0).pause();
+				});
 				$("#videoPlayer").animate({
 				    opacity: 1,
 				  }, 100, function() {
 				    // Animation complete.
+				});
+				$(".{{ entry.id }}").slideDown("slow", function() {
+					$(this).children('#video_fullwidth_html5_api').get(0).play();
 				});
 			});
 		});

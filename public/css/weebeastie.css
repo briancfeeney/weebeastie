@@ -1,3 +1,110 @@
+/**
+ * @license
+ * MyFonts Webfont Build ID 2988778, 2015-03-11T10:04:22-0400
+ * 
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are 
+ * explicitly restricted from using the Licensed Webfonts(s).
+ * 
+ * You may obtain a valid license at the URLs below.
+ * 
+ * Webfont: MercuryAlternative by T-26
+ * URL: http://www.myfonts.com/fonts/t26/mercury/alternative/
+ * Copyright: (r) (c) 1998 [T‐26] Chicago www.t26.com 773.862.1201 T0433 ID#5100854 designer: Peter Bruhn
+ * 
+ * Webfont: MercuryAlternativeBold by T-26
+ * URL: http://www.myfonts.com/fonts/t26/mercury/alternative-bold/
+ * Copyright: (r) (c) 1998 [T‐26] Chicago www.t26.com 773.862.1201 T0433 ID#5100858 designer: Peter Bruhn
+ * 
+ * Webfont: MercuryAlternativeBoldItalic by T-26
+ * URL: http://www.myfonts.com/fonts/t26/mercury/alternative-bold-italic/
+ * Copyright: (r) (c) 1998 [T‐26] Chicago www.t26.com 773.862.1201 T0433 ID#5100859 designer: Peter Bruhn
+ * 
+ * Webfont: MercuryAlternativeItalic by T-26
+ * URL: http://www.myfonts.com/fonts/t26/mercury/alternative-italic/
+ * Copyright: (r) (c) 1998 [T‐26] Chicago www.t26.com 773.862.1201 T0433 ID#5100855 designer: Peter Bruhn
+ * 
+ * Webfont: MercuryBold by T-26
+ * URL: http://www.myfonts.com/fonts/t26/mercury/bold/
+ * Copyright: (r) (c) 1998 [T‐26] Chicago www.t26.com 773.862.1201 T0433 ID#5100856 designer: Peter Bruhn
+ * 
+ * Webfont: MercuryBoldItalic by T-26
+ * URL: http://www.myfonts.com/fonts/t26/mercury/bold-italic/
+ * Copyright: (r) (c) 1998 [T‐26] Chicago www.t26.com 773.862.1201 T0433 ID#5100857 designer: Peter Bruhn
+ * 
+ * Webfont: MercuryBoldSmallCaps by T-26
+ * URL: http://www.myfonts.com/fonts/t26/mercury/bold-small-caps/
+ * Copyright: (r) (c) 1998 [T‐26] Chicago www.t26.com 773.862.1201 T0433 ID#5100860 designer: Peter Bruhn
+ * 
+ * Webfont: MercuryRegular by T-26
+ * URL: http://www.myfonts.com/fonts/t26/mercury/regular/
+ * Copyright: (r) (c) 1998 [T‐26] Chicago www.t26.com 773.862.1201 T0433 ID#5100851 designer: Peter Bruhn
+ * 
+ * Webfont: MercuryRegularItalic by T-26
+ * URL: http://www.myfonts.com/fonts/t26/mercury/regular-italic/
+ * Copyright: (r) (c) 1998 [T‐26] Chicago www.t26.com 773.862.1201 T0433 ID#5100852 designer: Peter Bruhn
+ * 
+ * Webfont: MercurySmallCaps by T-26
+ * URL: http://www.myfonts.com/fonts/t26/mercury/small-caps/
+ * Copyright: (r) (c) 1998 [T‐26] Chicago www.t26.com 773.862.1201 T0433 ID#5100853 designer: Peter Bruhn
+ * 
+ * 
+ * License: http://www.myfonts.com/viewlicense?type=web&buildid=2988778
+ * Licensed pageviews: 10,000
+ * 
+ * © 2015 MyFonts Inc
+*/
+/* @import must be at top of file, otherwise CSS will not work */
+@font-face {
+  font-family: 'MercuryAlternative';
+  src: url('/public/fonts/2D9AEA_0_0.eot');
+  src: url('/public/fonts/2D9AEA_0_0.eot?#iefix') format('embedded-opentype'), url('/public/fonts/2D9AEA_0_0.woff2') format('woff2'), url('/public/fonts/2D9AEA_0_0.woff') format('woff'), url('/public/fonts/2D9AEA_0_0.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'MercuryAlternativeBold';
+  src: url('/public/fonts/2D9AEA_1_0.eot');
+  src: url('/public/fonts/2D9AEA_1_0.eot?#iefix') format('embedded-opentype'), url('/public/fonts/2D9AEA_1_0.woff2') format('woff2'), url('/public/fonts/2D9AEA_1_0.woff') format('woff'), url('/public/fonts/2D9AEA_1_0.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'MercuryAlternativeBoldItalic';
+  src: url('/public/fonts/2D9AEA_2_0.eot');
+  src: url('/public/fonts/2D9AEA_2_0.eot?#iefix') format('embedded-opentype'), url('/public/fonts/2D9AEA_2_0.woff2') format('woff2'), url('/public/fonts/2D9AEA_2_0.woff') format('woff'), url('/public/fonts/2D9AEA_2_0.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'MercuryAlternativeItalic';
+  src: url('/public/fonts/2D9AEA_3_0.eot');
+  src: url('/public/fonts/2D9AEA_3_0.eot?#iefix') format('embedded-opentype'), url('/public/fonts/2D9AEA_3_0.woff2') format('woff2'), url('/public/fonts/2D9AEA_3_0.woff') format('woff'), url('/public/fonts/2D9AEA_3_0.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'MercuryBold';
+  src: url('/public/fonts/2D9AEA_4_0.eot');
+  src: url('/public/fonts/2D9AEA_4_0.eot?#iefix') format('embedded-opentype'), url('/public/fonts/2D9AEA_4_0.woff2') format('woff2'), url('/public/fonts/2D9AEA_4_0.woff') format('woff'), url('/public/fonts/2D9AEA_4_0.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'MercuryBoldItalic';
+  src: url('/public/fonts/2D9AEA_5_0.eot');
+  src: url('/public/fonts/2D9AEA_5_0.eot?#iefix') format('embedded-opentype'), url('/public/fonts/2D9AEA_5_0.woff2') format('woff2'), url('/public/fonts/2D9AEA_5_0.woff') format('woff'), url('/public/fonts/2D9AEA_5_0.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'MercuryBoldSmallCaps';
+  src: url('/public/fonts/2D9AEA_6_0.eot');
+  src: url('/public/fonts/2D9AEA_6_0.eot?#iefix') format('embedded-opentype'), url('/public/fonts/2D9AEA_6_0.woff2') format('woff2'), url('/public/fonts/2D9AEA_6_0.woff') format('woff'), url('/public/fonts/2D9AEA_6_0.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'MercuryRegular';
+  src: url('/public/fonts/2D9AEA_7_0.eot');
+  src: url('/public/fonts/2D9AEA_7_0.eot?#iefix') format('embedded-opentype'), url('/public/fonts/2D9AEA_7_0.woff2') format('woff2'), url('/public/fonts/2D9AEA_7_0.woff') format('woff'), url('/public/fonts/2D9AEA_7_0.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'MercuryRegularItalic';
+  src: url('/public/fonts/2D9AEA_8_0.eot');
+  src: url('/public/fonts/2D9AEA_8_0.eot?#iefix') format('embedded-opentype'), url('/public/fonts/2D9AEA_8_0.woff2') format('woff2'), url('/public/fonts/2D9AEA_8_0.woff') format('woff'), url('/public/fonts/2D9AEA_8_0.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'MercurySmallCaps';
+  src: url('/public/fonts/2D9AEA_9_0.eot');
+  src: url('/public/fonts/2D9AEA_9_0.eot?#iefix') format('embedded-opentype'), url('/public/fonts/2D9AEA_9_0.woff2') format('woff2'), url('/public/fonts/2D9AEA_9_0.woff') format('woff'), url('/public/fonts/2D9AEA_9_0.ttf') format('truetype');
+}
 @font-face {
   font-family: 'Mercury';
   src: url('public/fonts/mercurybold.eot');
@@ -91,12 +198,6 @@ video {
   height: auto;
   position: relative;
 }
-.video #video_fullwidth,
-.video #video_fullwidth_clone {
-  width: 100% !important;
-  height: 0 !important;
-  padding-bottom: 56.4%;
-}
 .video .video-info {
   position: absolute;
   left: 1em;
@@ -124,6 +225,11 @@ video {
   display: block;
   visibility: visible;
 }
+@media (max-width: 700px) {
+  .video .video-info {
+    font-size: .7em;
+  }
+}
 .video:hover .video-info {
   opacity: 1;
 }
@@ -132,14 +238,14 @@ video {
   opacity: 0;
   margin-bottom: 2em;
 }
-#videoPlayer #video_fullwidth,
-#videoPlayer #video_fullwidth_clone {
+.video-js .vjs-tech {
+  background: #ffffff;
+}
+#video_fullwidth,
+#video_fullwidth_clone {
   width: 100% !important;
   height: 0 !important;
   padding-bottom: 56.4%;
-}
-.video-js .vjs-tech {
-  background: #ffffff;
 }
 /* -------------------------------------------------------------------------------- */
 #header {
@@ -181,10 +287,9 @@ video {
 #header nav ul li {
   float: left;
   margin-left: 1em;
-  font-family: "Mercury", "ff-basic-gothic-web-pro", sans-serif;
-  font-style: normal;
-  font-weight: 300;
-  letter-spacing: -0.02em;
+  font-family: "MercuryRegular", "ff-basic-gothic-web-pro", sans-serif;
+  font-size: 1.1em;
+  letter-spacing: .02em;
 }
 #header nav ul li:first-child {
   margin-left: 0;
@@ -198,16 +303,16 @@ video {
   display: inline-block;
 }
 #header nav ul li:nth-child(1) a.active {
-  background-position: .3em 1.25em;
+  background-position: .3em 1em;
 }
 #header nav ul li:nth-child(2) a.active {
-  background-position: .33em 1.25em;
+  background-position: .41em 1em;
 }
 #header nav ul li:nth-child(3) a.active {
-  background-position: .15em 1.25em;
+  background-position: .17em 1em;
 }
 #header nav ul li:nth-child(4) a.active {
-  background-position: -3.75em 1.25em;
+  background-position: -3.75em 1em;
 }
 @media (max-width: 730px) {
   #header {
@@ -325,6 +430,7 @@ video {
   width: 46%;
   float: left;
   margin-bottom: 1em;
+  min-height: 11em;
 }
 .director:nth-child(2n) {
   float: right;
@@ -340,6 +446,9 @@ video {
 .director .workItem {
   width: 32.1%;
   padding-bottom: 17.9%;
+}
+.director .workItem:nth-child(3n) {
+  margin-right: 0;
 }
 @media (max-width: 960px) {
   .director .workItem {
@@ -364,6 +473,9 @@ video {
   float: right;
   margin-top: 0;
   font-size: .8em;
+  display: block;
+  width: 100%;
+  text-align: right;
 }
 .viewAll h4 {
   margin: 0;
@@ -426,9 +538,6 @@ video {
   text-align: center;
   margin-top: -1em;
 }
-.whatIsDivider .whatIs {
-  width: auto;
-}
 .whatIsAWeeBeastie {
   padding: 1em 0;
   overflow: hidden;
@@ -444,6 +553,21 @@ video {
     float: none;
     margin: 1em 0;
   }
+}
+.whatIs {
+  color: #000000;
+  margin-top: -1em;
+  background: #ffffff;
+  width: auto;
+  display: inline;
+  margin: 0 auto;
+  padding: 0 1em;
+  text-align: center;
+  font-family: "MercuryRegular", "ff-basic-gothic-web-pro", sans-serif;
+  font-size: 2em;
+}
+.whatIs span {
+  color: #009cdc;
 }
 /* -------------------------------------------------------------------------------- */
 .newsVideo {

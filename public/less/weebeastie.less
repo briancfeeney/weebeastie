@@ -1,3 +1,5 @@
+@import "MyFontsWebfontsKit.less";
+
 @large: 1000px;
 @medium: 960px;
 @small: 700px;
@@ -119,12 +121,6 @@ video {
 	width: 100%;
 	height: auto;
 	position: relative;
-	#video_fullwidth,
-	#video_fullwidth_clone {
-		width: 100% !important;
-		height: 0 !important;
-		padding-bottom: 56.4%;
-	}
 	.video-info {
 		position: absolute;
 		left: 1em;
@@ -151,6 +147,9 @@ video {
 			display: block;
 			visibility: visible;
 		}
+		@media (max-width: @small) {
+			font-size: .7em;
+		}
 	}
 	&:hover {
 		.video-info {
@@ -163,17 +162,20 @@ video {
 	display: none;
 	opacity: 0;
 	margin-bottom: 2em;
-	#video_fullwidth,
-	#video_fullwidth_clone {
-		width: 100% !important;
-		height: 0 !important;
-		padding-bottom: 56.4%;
-	}
 }
 
 .video-js .vjs-tech {
 	background: @white;
 }
+
+
+#video_fullwidth,
+#video_fullwidth_clone {
+	width: 100% !important;
+	height: 0 !important;
+	padding-bottom: 56.4%;
+}
+
 
 /* -------------------------------------------------------------------------------- */
 // HEADER
@@ -209,8 +211,9 @@ video {
 			li {
 				float: left;
 				margin-left: 1em;
-				.BasicGothicReg();
-				letter-spacing: -.02em;
+				font-family: "MercuryRegular","ff-basic-gothic-web-pro",sans-serif;
+				font-size: 1.1em;
+				letter-spacing: .02em;
 				&:first-child {
 					margin-left: 0;
 				}
@@ -223,16 +226,16 @@ video {
 					display: inline-block;
 				}
 				&:nth-child(1) a.active {
-					background-position: .3em 1.25em;
+					background-position: .3em 1em;
 				}
 				&:nth-child(2) a.active {
-					background-position: .33em 1.25em;
+					background-position: .41em 1em;
 				}
 				&:nth-child(3) a.active {
-					background-position: .15em 1.25em;
+					background-position: .17em 1em;
 				}
 				&:nth-child(4) a.active {
-					background-position: -3.75em 1.25em;
+					background-position: -3.75em 1em;
 				}
 			}
 		}
@@ -367,6 +370,7 @@ video {
 	width: 46%;
 	float: left;
 	margin-bottom: 1em;
+	min-height: 11em;
 	&:nth-child(2n) {
 		float: right;
 	}
@@ -381,6 +385,9 @@ video {
 	.workItem {
 		width: 32.1%;
 		padding-bottom: 17.9%;
+		&:nth-child(3n) {
+			margin-right: 0;
+		}
 		@media (max-width: @medium) {
 			width: 31.6%;
 			&:nth-child(2n) {
@@ -403,6 +410,9 @@ video {
 	float: right;
 	margin-top: 0;
 	font-size: .8em;
+	display: block;
+	width: 100%;
+	text-align: right;
 	h4 {
 		margin: 0;
 		color: @gray;
@@ -470,9 +480,6 @@ video {
 .whatIsDivider {
 	text-align: center;
 	margin-top: -1em;
-	.whatIs {
-		width: auto;
-	}
 }
 
 .whatIsAWeeBeastie {
@@ -490,6 +497,21 @@ video {
 	}
 }
 
+.whatIs {
+	color: @black;
+	margin-top: -1em;
+	background: @white;
+	width: auto;
+	display: inline;
+  	margin: 0 auto;
+	padding: 0 1em;
+	text-align: center;
+	font-family: "MercuryRegular","ff-basic-gothic-web-pro",sans-serif;
+	font-size: 2em;
+	span {
+		color: @blue;
+	}
+}
 
 /* -------------------------------------------------------------------------------- */
 // NEWS

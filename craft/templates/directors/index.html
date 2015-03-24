@@ -15,11 +15,13 @@
 				{% for ogg in entry.videoOGG %}
 					<source src="{{ ogg.getUrl() }}" type="video/ogg">
 				{% endfor %}
+				
 				Video not supported
 			</video>
 		{% endfor %}
 	</section>
 
+<!-- 
 	<section id="directors">
 		{% for entry in craft.entries.section('directors').order('postDate asc') %}
 			<div class="director">
@@ -40,19 +42,45 @@
 			</div>
 		{% endfor %}
 	</section>
+-->
+	
+	<!-- Director Selection -->
+	<section id="directors">
+		{% for directors in entry.directorSelection %}
+			<div class="director">
+				<h3>{{ directors.title }}</h3>
+				<div class="directorVideos">
+			        {% for work in directors.videoSelection %}
+			            <div class="workItem {{ work.id }}">
+							{% for image in work.screenshot.limit(1) %}
+								<img src="{{ image.getUrl() }}">
+							{% endfor %}
+						</div>
+			        {% endfor %}
+				</div>
+				<a href="{{ directors.url }}" class="viewAll"><h4>View All</h4><img src="/public/img/arrow.png"></a>
+			</div>
+		{% endfor %}
+	</section>
+	
+	
 	
 	{% for entry in craft.entries.section('work').find() %}
 	<script>
 		$(window).load(function() {
 			$(".workItem.{{ entry.id }}").click(function() {
 				$("#videoPlayer").slideDown("slow");
-				$(".topVideo").hide();
-				$(".{{ entry.id }}").slideDown("slow");
-				
+				$("html, body").animate({ scrollTop: 0 }, 600);
+				$(".topVideo").hide(function() {
+					$(this).children('#video_fullwidth_html5_api').get(0).pause();
+				});
 				$("#videoPlayer").animate({
 				    opacity: 1,
 				  }, 100, function() {
 				    // Animation complete.
+				});
+				$(".{{ entry.id }}").slideDown("slow", function() {
+					$(this).children('#video_fullwidth_html5_api').get(0).play();
 				});
 			});
 		});

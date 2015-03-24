@@ -4,6 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
 <head>
 	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width">
 	<title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
 	<link rel="home" href="{{ siteUrl }}" />
 	<link rel="stylesheet" type="text/css" href="../public/css/weebeastie.css" /> 
@@ -18,11 +19,7 @@
 	<link href="/public/css/video-js.css" rel="stylesheet">
 	<script src="/public/js/video.js"></script>
 	<script>
-	  videojs.options.flash.swf = "http://example.com/path/to/video-js.swf"
-	</script>
-	
-	<script type="text/javascript">
-	  document.createElement('video');document.createElement('audio');document.createElement('track');
+	  videojs.options.flash.swf = "/public/js/video-js.swf"
 	</script>
 	
 	<link href="/public/css/flexslider.css" rel="stylesheet">
@@ -41,7 +38,7 @@
 					<li><a href="{{ url('work') }}" {% if craft.request.firstSegment == 'work' %}class="active"{% endif %}>our work</a></li>
 					<li><a href="{{ url('directors') }}" {% if craft.request.firstSegment == 'directors' %}class="active"{% endif %}>directors</a></li>
 					<li><a href="{{ url('about') }}" {% if craft.request.firstSegment == 'about' %}class="active"{% endif %}>about us</a></li>
-					<li><a href="{{ url('news') }}" {% if craft.request.firstSegment == 'news' %}class="active"{% endif %}>news</a></li>
+					<!-- <li><a href="{{ url('news') }}" {% if craft.request.firstSegment == 'news' %}class="active"{% endif %}>news</a></li> -->
 				</ul>
 			</nav>
 		</header>
@@ -64,5 +61,10 @@
 			</ul>
 		</div>
 	</footer>
+	
+	<script type="text/javascript">
+	  document.createElement('video');document.createElement('audio');document.createElement('track');
+	</script>
+	
 </body>
 </html>

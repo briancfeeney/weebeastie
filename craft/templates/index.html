@@ -1,21 +1,4 @@
-{#
- # Homepage template
- # ---------------
- #
- # When this template gets loaded, it will be because someone has accessed
- # http://yoursite.com/ (without any URI). Craft checks to see if you have
- # a Single section set to be the Homepage (as you do, by default), and
- # loads the section’s Template (this file). A special ‘entry’ variable
- # will already be set for you, assigned to the Homepage entry.
- #
- # It's worth noting that even if you didn't have a Homepage Single section,
- # as long as this template remains at craft/templates/index.html, it
- # would still be the one to get loaded when accessing http://yoursite.com/,
- # albeit without an ‘entry’ variable already set for you.
- #
- # See this page for more details on how Craft routes requests:
- # http://buildwithcraft.com/docs/routing
- #}
+{# Homepage template #}
 
 {% extends "_layout" %}
 
@@ -27,7 +10,7 @@
 			{% for video in entry.videoSelection %}
 				<li>
 					<article class="slideshow video">
-						<video id="video_fullwidth" class="video-js vjs-default-skin" preload="auto" controls volume="7" data-setup='{"example_option":true}'
+						<!-- <video id="video_fullwidth" controls volume="7" style="width:100%;"
 						poster="{% for image in video.screenshot.limit(1) %}{{ image.getUrl() }}{% endfor %}">
 							{% for mp4 in video.videoMP4 %}
 								<source src="{{ mp4.getUrl() }}" type="video/mp4">
@@ -36,7 +19,18 @@
 								<source src="{{ ogg.getUrl() }}" type="video/ogg">
 							{% endfor %}
 							Video not supported
+						</video> -->
+						
+						<video id="video_fullwidth" class="video-js vjs-default-skin" preload="auto" controls volume="7" data-setup='{}' poster="{% for image in video.screenshot.limit(1) %}{{ image.getUrl() }}{% endfor %}">
+							{% for mp4 in video.videoMP4 %}
+								<source src="{{ mp4.getUrl() }}" type="video/mp4">
+							{% endfor %}
+							{% for ogg in video.videoOGG %}
+								<source src="{{ ogg.getUrl() }}" type="video/ogg">
+							{% endfor %}
+							Video not supported
 						</video>
+						
 						<div class="video-info">
 							<h1>{{ video.client }}</h1>
 							<h3>{{ video.projectName }}</h3>
@@ -55,6 +49,27 @@
 		    slideshow: false
 		  });
 		});
+		
+		$(window).load(function() {
+			$(".flex-direction-nav").click(function() {
+				$('audio,video').each(function() {
+					this.pause();
+				});
+			});
+			$(".flex-control-nav").click(function() {
+				$('audio,video').each(function() {
+					this.pause();
+				});
+			});
+			
+			$('audio,video').bind('play', function() {
+				activated = this;
+				$('audio,video').each(function() {
+					if(this != activated) this.pause();
+				});
+			});
+		});
+
 	</script>
 
 {% endblock %}
