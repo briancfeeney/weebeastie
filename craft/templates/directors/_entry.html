@@ -6,7 +6,7 @@
 
 	<section id="videoPlayer">
 		{% for entry in craft.entries.section('work').find() %}
-			<video id="video_fullwidth" class="video-js vjs-default-skin topVideo {{ entry.id }}" preload="auto" controls volume="7" data-setup='{"example_option":true}'
+			<video id="video_fullwidth" class="video-js vjs-default-skin topVideo {{ entry.id }}" preload="none" controls volume="7" data-setup='{"example_option":true}'
 			poster="{% for image in entry.screenshot.limit(1) %}{{ image.getUrl() }}{% endfor %}">
 				{% for mp4 in entry.videoMP4 %}
 					<source src="{{ mp4.getUrl() }}" type="video/mp4">
@@ -33,7 +33,7 @@
 					<h2>{{ work.projectName }}</h2>
 				</div>
 				{% for image in work.screenshot.limit(1) %}
-					<img src="{{ image.getUrl() }}">
+					<img src="{{ image.getUrl('screencap') }}">
 				{% endfor %}
 			</div>
         {% endfor %}

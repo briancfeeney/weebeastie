@@ -450,6 +450,15 @@ video {
 .director .workItem:nth-child(3n) {
   margin-right: 0;
 }
+.director .workItem .workTitling {
+  font-size: .65em;
+}
+.director .workItem .workTitling h1 {
+  line-height: 1.3em;
+}
+.director .workItem .workTitling h2 {
+  line-height: 1.3em;
+}
 @media (max-width: 960px) {
   .director .workItem {
     width: 31.6%;

@@ -6,8 +6,8 @@
 {% block content %}
 
 	<section id="videoPlayer">
-		{% for entry in craft.entries.section('work').type('WeeBeastie').find() %}
-			<video id="video_fullwidth" class="video-js vjs-default-skin vjs-big-play-centered topVideo {{ entry.id }}" preload="none" controls volume="7" data-setup='{"example_option":true}'
+		{% for entry in craft.entries.section('work').find() %}
+			<video id="video_fullwidth" class="video-js vjs-default-skin vjs-big-play-centered topVideo {{ entry.id }}" preload="auto" controls volume="7" data-setup='{"example_option":true}'
 			poster="{% for image in entry.screenshot.limit(1) %}{{ image.getUrl() }}{% endfor %}">
 				{% for mp4 in entry.videoMP4 %}
 					<source src="{{ mp4.getUrl() }}" type="video/mp4">
@@ -23,9 +23,9 @@
 	<select class="dropdown" id="dropdown">
 		<option style="display:none;" name="videotype">Show Only...</option>
 		<option name="showAll" value="showAll">Show All</option>
-		{% set field = craft.fields.getFieldByHandle('videoCategories') %}
+		{% set field = craft.fields.getFieldByHandle('videoCategory') %}
 		{% for opt in field.settings.options %}
-			<option name="fields[videoCategories][]" value="{{ opt.value }}">{{ opt.label }}</option>
+			<option name="fields[videoCategory][]" value="{{ opt.value }}">{{ opt.label }}</option>
 		{% endfor %}
 	</select>
 	
@@ -42,21 +42,29 @@
 			
 		});
 	</script>
+	
+	<section id="workGallery">
+		---
+		{% for videos in work.videoSelection %}
+			test
+		{% endfor %}
+		---
+	</section>
 
 	<section id="workGallery">
-		{% for entry in craft.entries.section('work').type('WeeBeastie').find() %}
-			<div class="workItem {% for option in entry.videoCategories %} {{ option }} {% endfor %} {{ entry.id }} grid">
+		{% for entry in craft.entries.section('work').find() %}
+			<div class="workItem {{ entry.videoCategory }} {{ entry.id }} grid">
 				<div class="workTitling">
 					<h1>{{ entry.client }}</h1>
 					<h2>{{ entry.projectName }}</h2>
 				</div>
 				{% for image in entry.screenshot.limit(1) %}
-					<img src="{{ image.getUrl('screencap') }}">
+					<img src="{{ image.getUrl() }}">
 				{% endfor %}
 			</div>			
 		{% endfor %}
 		
-		{% for entry in craft.entries.section('work').type('WeeBeastie').find() %}
+		{% for entry in craft.entries.section('work').find() %}
 		<script>
 			$(window).load(function() {
 				$(".workItem.{{ entry.id }}").click(function() {
@@ -78,22 +86,5 @@
 		</script>
 		{% endfor %}
 	</section>
-	
-	<script>
-		$(window).load(function() {
-			$(".workItem").click(function() {
-				$('audio,video').each(function() {
-					this.pause();
-				});
-			});
-		
-			$('audio,video').bind('play', function() {
-				activated = this;
-				$('audio,video').each(function() {
-					if(this != activated) this.pause();
-				});
-			});
-		});
-	</script>
 
 {% endblock %}

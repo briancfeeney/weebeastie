@@ -1,13 +1,13 @@
 {# Directors index template #}
 
 {% extends "_layout" %}
-{% set title = "Work" %}
+{% set title = "Directors" %}
 
 {% block content %}
 
 	<section id="videoPlayer">
 		{% for entry in craft.entries.section('work').find() %}
-			<video id="video_fullwidth" class="video-js vjs-default-skin topVideo {{ entry.id }}" preload="auto" controls volume="7" data-setup='{"example_option":true}'
+			<video id="video_fullwidth" class="video-js vjs-default-skin topVideo {{ entry.id }}" preload="none" controls volume="7" data-setup='{"example_option":true}'
 			poster="{% for image in entry.screenshot.limit(1) %}{{ image.getUrl() }}{% endfor %}">
 				{% for mp4 in entry.videoMP4 %}
 					<source src="{{ mp4.getUrl() }}" type="video/mp4">
@@ -20,29 +20,6 @@
 			</video>
 		{% endfor %}
 	</section>
-
-<!-- 
-	<section id="directors">
-		{% for entry in craft.entries.section('directors').order('postDate asc') %}
-			<div class="director">
-				<h3>{{ entry.title }}</h3>
-				<div class="directorVideos">
-					{% set posts = craft.entries.find({section:'work', parentOf:entry}) %}
-					{% if posts | length %}
-				        {% for post in posts %}
-				            <div class="workItem {{ post.id }}">
-								{% for image in post.screenshot.limit(1) %}
-									<img src="{{ image.getUrl() }}">
-								{% endfor %}
-							</div>
-				        {% endfor %}
-					{% endif %}
-				</div>
-				<a href="{{ entry.url }}" class="viewAll"><h4>View All</h4><img src="/public/img/arrow.png"></a>
-			</div>
-		{% endfor %}
-	</section>
--->
 	
 	<!-- Director Selection -->
 	<section id="directors">
@@ -50,10 +27,14 @@
 			<div class="director">
 				<h3>{{ directors.title }}</h3>
 				<div class="directorVideos">
-			        {% for work in directors.videoSelection %}
+			        {% for work in directors.videoSelection.limit(3) %}
 			            <div class="workItem {{ work.id }}">
+							<div class="workTitling">
+								<h1>{{ work.client }}</h1>
+								<h2>{{ work.projectName }}</h2>
+							</div>
 							{% for image in work.screenshot.limit(1) %}
-								<img src="{{ image.getUrl() }}">
+								<img src="{{ image.getUrl('screencap') }}">
 							{% endfor %}
 						</div>
 			        {% endfor %}
@@ -86,5 +67,22 @@
 		});
 	</script>
 	{% endfor %}
+	
+	<script>
+		$(window).load(function() {
+			$(".workItem").click(function() {
+				$('audio,video').each(function() {
+					this.pause();
+				});
+			});
+		
+			$('audio,video').bind('play', function() {
+				activated = this;
+				$('audio,video').each(function() {
+					if(this != activated) this.pause();
+				});
+			});
+		});
+	</script>
 
 {% endblock %}
