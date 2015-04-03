@@ -47,7 +47,7 @@ jQuery(document).ready(function ($) {
 		$videoPlayer.slideDown("slow");
 		$body.animate({ scrollTop: 0 }, 600);
 
-		$('topVideo').hide(function() {
+		$('.topVideo').hide(function() {
 			$(this).children().get(0).pause();
 			// $topVideos.children().get(0).pause();
 			// $(this).children().get(0).pause();
