@@ -621,7 +621,7 @@ class ElementsService extends BaseApplicationComponent
 			$contentService = craft()->content;
 			$originalFieldColumnPrefix = $contentService->fieldColumnPrefix;
 
-			// TODO: $fields should already be defined by now in Carft 3.0
+			// TODO: $fields should already be defined by now in Craft 3.0
 			$fields = $elementType->getFieldsForElementsQuery($criteria);
 			$extraCriteriaAttributes = $criteria->getExtraAttributeNames();
 
@@ -1444,6 +1444,7 @@ class ElementsService extends BaseApplicationComponent
 		$criteria->descendantDist = 1;
 		$criteria->status = null;
 		$criteria->localeEnabled = null;
+		$criteria->locale = $element->locale;
 		$children = $criteria->find();
 
 		foreach ($children as $child)
