@@ -241,6 +241,7 @@ video {
 .video-js .vjs-tech {
   background: #ffffff;
 }
+.video-js.topVideo,
 #video_fullwidth,
 #video_fullwidth_clone {
   width: 100% !important;
@@ -251,11 +252,6 @@ video {
 #header {
   margin: 1em 0 1.5em;
   overflow: hidden;
-  /*
-	@media (max-width: 450px) {
-		font-size: .7em;
-	}
-	*/
 }
 #header a {
   color: #000000;

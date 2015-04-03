@@ -4,9 +4,10 @@
 
 {% block content %}
 
+	<!-- Video Player -->
 	<section id="videoPlayer">
 		{% for entry in craft.entries.section('work').find() %}
-			<video id="video_fullwidth" class="video-js vjs-default-skin topVideo {{ entry.id }}" preload="none" controls volume="7" data-setup='{"example_option":true}'
+			<video id="video_{{ entry.id }}" class="video-js vjs-default-skin topVideo video_{{ entry.id }}" preload="none" controls volume="7" data-setup="{'autoplay':false, 'preload':false, }"
 			poster="{% for image in entry.screenshot.limit(1) %}{{ image.getUrl() }}{% endfor %}">
 				{% for mp4 in entry.videoMP4 %}
 					<source src="{{ mp4.getUrl() }}" type="video/mp4">
@@ -27,7 +28,7 @@
 	
 	<section id="workGallery">
 		{% for work in entry.videoSelection %}
-            <div class="workItem {{ work.id }}">
+            <div class="workItem video_{{ work.id }}">
 				<div class="workTitling">
 					<h1>{{ work.client }}</h1>
 					<h2>{{ work.projectName }}</h2>
@@ -39,6 +40,7 @@
         {% endfor %}
 	</section>
 	
+	<!-- REPEATING SCRIPT -->
 	{% for entry in craft.entries.section('work').find() %}
 	<script>
 		$(window).load(function() {

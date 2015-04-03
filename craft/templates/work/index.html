@@ -5,13 +5,12 @@
 
 {% block content %}
 
-
-
+	<!-- Video Player -->
 	<section id="videoPlayer">
 		{% for ourWorkGallery in craft.entries.section('ourWork').find() %}
 			{% set GalleryList = ourWorkGallery.videoSelection %}
 			{% for entry in GalleryList %}
-			<video id="video_fullwidth" class="video-js vjs-default-skin vjs-big-play-centered topVideo {{ entry.id }}" preload="none" controls volume="7" data-setup='{"example_option":true}'
+			<video id="video_{{ entry.id }}" class="video-js vjs-default-skin vjs-big-play-centered topVideo video_{{ entry.id }}" preload="none" controls volume="7" data-setup='{"example_option":true, "autoplay":false, "preload":false}' data-workid="{{ entry.id }}" 
 			poster="{% for image in entry.screenshot.limit(1) %}{{ image.getUrl() }}{% endfor %}">
 				{% for mp4 in entry.videoMP4 %}
 					<source src="{{ mp4.getUrl() }}" type="video/mp4">
@@ -25,6 +24,7 @@
 		{% endfor %}
 	</section>
 	
+	<!-- Dropdown Select -->
 	<select class="dropdown" id="dropdown">
 		<option style="display:none;" name="videotype">Show Only...</option>
 		<option name="showAll" value="showAll">Show All</option>
@@ -34,6 +34,32 @@
 		{% endfor %}
 	</select>
 	
+	<!-- Video Thumbnails -->
+	<section id="workGallery">
+		{% for ourWorkGallery in craft.entries.section('ourWork').find() %}
+			{% set GalleryList = ourWorkGallery.videoSelection %}
+			{% for entry in GalleryList %}
+			
+				<div class="workItem {% for option in entry.videoCategories %} {{ option }} {% endfor %} video_{{ entry.id }} grid" data-workid="{{ entry.id }}">
+					<div class="workTitling">
+						<h1>{{ entry.client }}</h1>
+						<h2>{{ entry.projectName }}</h2>
+					</div>
+					{% for image in entry.screenshot.limit(1) %}
+					
+					<img src="{{ image.getUrl('screencap') }}">
+					{% endfor %}
+					
+				</div>
+								
+			{% endfor %}
+		{% endfor %}
+	</section>
+
+
+	<script src="/public/js/functions.js"></script>
+
+	<!--
 	<script>
 		$(document).on("change", "#dropdown", function(){
 			if ($(this).val() == "showAll") {
@@ -45,60 +71,7 @@
 		    }
 		});
 	</script>
-	
-	<section id="workGallery">
-		{% for ourWorkGallery in craft.entries.section('ourWork').find() %}
-			{% set GalleryList = ourWorkGallery.videoSelection %}
-			{% for entry in GalleryList %}
-				<div class="workItem {% for option in entry.videoCategories %} {{ option }} {% endfor %} {{ entry.id }} grid">
-					<div class="workTitling">
-						<h1>{{ entry.client }}</h1>
-						<h2>{{ entry.projectName }}</h2>
-					</div>
-					{% for image in entry.screenshot.limit(1) %}
-						<img src="{{ image.getUrl('screencap') }}">
-					{% endfor %}
-				</div>
-				<script>
-					$(window).load(function() {
-						$(".workItem.{{ entry.id }}").click(function() {
-							$("#videoPlayer").slideDown("slow");
-							$("html, body").animate({ scrollTop: 0 }, 600);
-							$(".topVideo").hide(function() {
-								$(this).children('#video_fullwidth_html5_api').get(0).pause();
-							});
-							$("#videoPlayer").animate({
-							    opacity: 1,
-							  }, 100, function() {
-							    // Animation complete.
-							});
-							$(".{{ entry.id }}").slideDown("slow", function() {
-								$(this).children('#video_fullwidth_html5_api').get(0).play();
-							});
-						});
-					});
-				</script>
-			{% endfor %}
-		{% endfor %}
-	</section>
+	-->
 
-	
-
-	<script>
-		$(window).load(function() {
-			$(".workItem").click(function() {
-				$('audio,video').each(function() {
-					this.pause();
-				});
-			});
-		
-			$('audio,video').bind('play', function() {
-				activated = this;
-				$('audio,video').each(function() {
-					if(this != activated) this.pause();
-				});
-			});
-		});
-	</script>
 
 {% endblock %}
