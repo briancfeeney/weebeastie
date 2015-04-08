@@ -7,18 +7,21 @@
 
 	<!-- Video Player -->
 	<section id="videoPlayer">
-		{% for entry in craft.entries.section('work').find() %}
-			<video id="video_{{ entry.id }}" class="video-js vjs-default-skin vjs-big-play-centered topVideo video_{{ entry.id }}" preload="none" controls volume="7" data-setup='{"example_option":true, "autoplay":false, "preload":false}' data-workid="{{ entry.id }}" 
-			poster="{% for image in entry.screenshot.limit(1) %}{{ image.getUrl() }}{% endfor %}">
-				{% for mp4 in entry.videoMP4 %}
-					<source src="{{ mp4.getUrl() }}" type="video/mp4">
-				{% endfor %}
-				{% for ogg in entry.videoOGG %}
-					<source src="{{ ogg.getUrl() }}" type="video/ogg">
-				{% endfor %}
-				
-				Video not supported
-			</video>
+		
+		{% for directors in entry.directorSelection %}
+			        {% for entry in directors.videoSelection.limit(3) %}
+						<video id="video_{{ entry.id }}" class="video-js vjs-default-skin vjs-big-play-centered topVideo video_{{ entry.id }}" preload="none" controls volume="7" data-setup='{"example_option":true, "autoplay":false, "preload":false}' data-workid="{{ entry.id }}" 
+						poster="{% for image in entry.screenshot.limit(1) %}{{ image.getUrl() }}{% endfor %}">
+							{% for mp4 in entry.videoMP4 %}
+								<source src="{{ mp4.getUrl() }}" type="video/mp4">
+							{% endfor %}
+							{% for ogg in entry.videoOGG %}
+								<source src="{{ ogg.getUrl() }}" type="video/ogg">
+							{% endfor %}
+
+							Video not supported
+						</video>
+			        {% endfor %}
 		{% endfor %}
 	</section>
 	
@@ -46,27 +49,4 @@
 	</section>
 	
 	
-	<!-- REPEATING SCRIPT -->
-	{% for entry in craft.entries.section('work').find() %}
-	<!--script>
-		$(window).load(function() {
-			$(".workItem.{{ entry.id }}").click(function() {
-				$("#videoPlayer").slideDown("slow");
-				$("html, body").animate({ scrollTop: 0 }, 600);
-				$(".topVideo").hide(function() {
-					$(this).children('#video_fullwidth_html5_api').get(0).pause();
-				});
-				$("#videoPlayer").animate({
-				    opacity: 1,
-				  }, 100, function() {
-				    // Animation complete.
-				});
-				$(".{{ entry.id }}").slideDown("slow", function() {
-					$(this).children('#video_fullwidth_html5_api').get(0).play();
-				});
-			});
-		});
-	</script-->
-	{% endfor %}
-
 {% endblock %}

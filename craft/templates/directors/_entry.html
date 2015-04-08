@@ -6,7 +6,7 @@
 
 	<!-- Video Player -->
 	<section id="videoPlayer">
-		{% for entry in craft.entries.section('work').find() %}
+		{% for entry in entry.videoSelection %}
 			<video id="video_{{ entry.id }}" class="video-js vjs-default-skin topVideo video_{{ entry.id }}" preload="none" controls volume="7" data-setup='{"example_option":true, "autoplay":false, "preload":false}' data-workid="{{ entry.id }}" 
 			poster="{% for image in entry.screenshot.limit(1) %}{{ image.getUrl() }}{% endfor %}">
 				{% for mp4 in entry.videoMP4 %}
@@ -17,7 +17,7 @@
 				{% endfor %}
 				Video not supported
 			</video>
-		{% endfor %}
+        {% endfor %}
 	</section>
 
 	<section id="directorInfo">
