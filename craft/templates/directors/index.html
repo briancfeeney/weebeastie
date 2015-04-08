@@ -68,25 +68,5 @@
 		});
 	</script-->
 	{% endfor %}
-	
-	<script src="/public/js/functions.js"></script>
-	<!--
-	<script>
-		$(window).load(function() {
-			$(".workItem").click(function() {
-				$('audio,video').each(function() {
-					this.pause();
-				});
-			});
-		
-			$('audio,video').bind('play', function() {
-				activated = this;
-				$('audio,video').each(function() {
-					if(this != activated) this.pause();
-				});
-			});
-		});
-	</script>
-	-->
 
 {% endblock %}

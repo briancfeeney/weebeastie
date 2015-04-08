@@ -65,16 +65,20 @@ jQuery(document).ready(function ($) {
 	
 	// Home page carousel.
 	
-	$('.flexslider').flexslider({
-	  animation: "slide",
-	  slideshow: false
-	});
-
-	$(".flex-direction-nav").add(".flex-control-nav").on('click', function() {
-		$('audio,video').each(function() {
-			this.pause();
+	var $flexslider = $('.flexslider');
+	if ($flexslider) {
+		$flexslider.flexslider({
+		  animation: "slide",
+		  slideshow: false
 		});
-	});
+	
+		$(".flex-direction-nav", ".flex-control-nav").on('click', function() {
+			$('audio,video').each(function() {
+				this.pause();
+			});
+		});
+	}
+	
 	
 	// Dropdown filters.
 

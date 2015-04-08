@@ -3,31 +3,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
 <head>
 	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
 	<link rel="home" href="{{ siteUrl }}" />
 	<link rel="stylesheet" type="text/css" href="../public/css/weebeastie.css" /> 
 	
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-  <script type="text/javascript">
-    if (typeof jQuery == 'undefined') {
-        document.write(unescape("%3Cscript src='/public/js/jquery.1.11.0.min.js' type='text/javascript'%3E%3C/script%3E"));
-    }
-    </script>
-	
-	<script src="//use.typekit.net/uvl5qdh.js"></script>
-	<script>try{Typekit.load();}catch(e){}</script>
-	
 	<script src="/public/js/modernizr.custom.99139.js"></script>
 	
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script type="text/javascript">
+    	if (typeof jQuery == 'undefined') {
+        	document.write(unescape("%3Cscript src='/public/js/jquery.1.11.0.min.js' type='text/javascript'%3E%3C/script%3E"));
+    	}
+    </script>
+
 	<link href="/public/css/video-js.css" rel="stylesheet">
-	<script src="/public/js/video.js"></script>
+	<link href="/public/css/flexslider.css" rel="stylesheet">
+
+	<script src="/public/js/scripts.min.js"></script>
 	<script>
 	  videojs.options.flash.swf = "/public/js/video-js.swf"
 	</script>
-	
-	<link href="/public/css/flexslider.css" rel="stylesheet">
-	<script src="/public/js/jquery.flexslider-min.js"></script>
+		
+	<script src="//use.typekit.net/uvl5qdh.js"></script>
+	<script>try{Typekit.load();}catch(e){}</script>
 </head>
 
 <body>
