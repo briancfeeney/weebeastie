@@ -126,7 +126,6 @@ video {
 		left: 1em;
 		top: 1em;
 		color: #fff;
-		opacity: 0;
 		h1 {
 			font-size: 2.75em;
 			line-height: 1em;
@@ -151,10 +150,12 @@ video {
 			font-size: .7em;
 		}
 	}
-	&:hover {
-		.video-info {
-			opacity: 1;
-		}
+	.vjs-playing:hover + .video-info,
+	.vjs-paused + .video-info {
+		opacity: 1;
+	}
+	.vjs-playing + .video-info {
+		opacity: 0;
 	}
 }
 

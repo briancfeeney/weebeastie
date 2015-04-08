@@ -1,3 +1,15 @@
+AddType video/webm .webm
+AddType video/ogg .ogv
+AddType video/mp4 .mp4
+AddType video/mpeg .mp4
+AddType application/ogg .ogv
+
+<IfModule mod_deflate.c>
+    <filesMatch "\.(js|css|html|php)$">
+        SetOutputFilter DEFLATE
+    </filesMatch>
+</IfModule>
+
 <IfModule mod_rewrite.c>
 	RewriteEngine On
 
@@ -8,7 +20,3 @@
 	RewriteRule (.+) index.php?p=$1 [QSA,L]
 	
 </IfModule>
-
-AddType video/webm .webm
-AddType video/ogg .ogv
-AddType video/mp4 .mp4

@@ -203,7 +203,6 @@ video {
   left: 1em;
   top: 1em;
   color: #fff;
-  opacity: 0;
 }
 .video .video-info h1 {
   font-size: 2.75em;
@@ -230,8 +229,12 @@ video {
     font-size: .7em;
   }
 }
-.video:hover .video-info {
+.video .vjs-playing:hover + .video-info,
+.video .vjs-paused + .video-info {
   opacity: 1;
+}
+.video .vjs-playing + .video-info {
+  opacity: 0;
 }
 #videoPlayer {
   display: none;

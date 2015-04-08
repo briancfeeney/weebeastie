@@ -8,7 +8,7 @@
 	<!-- Video Player -->
 	<section id="videoPlayer">
 		{% for entry in craft.entries.section('work').find() %}
-			<video id="video_{{ entry.id }}" class="video-js vjs-default-skin topVideo video_fullwidth video_{{ entry.id }}" preload="none" controls volume="7" data-setup="{'autoplay':false, 'preload':false, }"
+			<video id="video_{{ entry.id }}" class="video-js vjs-default-skin vjs-big-play-centered topVideo video_{{ entry.id }}" preload="none" controls volume="7" data-setup='{"example_option":true, "autoplay":false, "preload":false}' data-workid="{{ entry.id }}" 
 			poster="{% for image in entry.screenshot.limit(1) %}{{ image.getUrl() }}{% endfor %}">
 				{% for mp4 in entry.videoMP4 %}
 					<source src="{{ mp4.getUrl() }}" type="video/mp4">
@@ -29,7 +29,7 @@
 				<h3>{{ directors.title }}</h3>
 				<div class="directorVideos">
 			        {% for work in directors.videoSelection.limit(3) %}
-			            <div class="workItem video_{{ work.id }}" data-workid="{{ entry.id }}">
+			            <div class="workItem video_{{ work.id }}" data-workid="{{ work.id }}">
 							<div class="workTitling">
 								<h1>{{ work.client }}</h1>
 								<h2>{{ work.projectName }}</h2>
@@ -70,6 +70,7 @@
 	{% endfor %}
 	
 	<script src="/public/js/functions.js"></script>
+	<!--
 	<script>
 		$(window).load(function() {
 			$(".workItem").click(function() {
@@ -86,5 +87,6 @@
 			});
 		});
 	</script>
+	-->
 
 {% endblock %}

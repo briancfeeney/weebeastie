@@ -1,37 +1,14 @@
 /* global console */
 
-/*
-				<script>
-					$(window).load(function() {
-						$(".workItem.{{ entry.id }}").click(function() {
-							$("#videoPlayer").slideDown("slow");
-							$("html, body").animate({ scrollTop: 0 }, 600);
-							$(".topVideo").hide(function() {
-								$(this).children('#video_fullwidth_html5_api').get(0).pause();
-							});
-							$("#videoPlayer").animate({
-							    opacity: 1,
-							  }, 100, function() {
-							    // Animation complete.
-							});
-							$(".{{ entry.id }}").slideDown("slow", function() {
-								$(this).children('#video_fullwidth_html5_api').get(0).play();
-							});
-						});
-					});
-				</script>
-
-*/
-
-
 jQuery(document).ready(function ($) {
-	// $(window).load(function() {
 		
 	var workID, workIDclass, workIDid,
 		$body = $("html, body"), 
 		$videoPlayer = $("#videoPlayer"),
-//		$topVideos = $(".topVideo"),
 		htmlVideo;
+		
+		// Video playback.
+		
 		
 	$(".workItem").on("click", function() {
 		workID = $(this).data("workid"); 
@@ -39,12 +16,13 @@ jQuery(document).ready(function ($) {
 		workIDid = '#video_' + workID;
 		htmlVideo = workIDid + '_html5_api';
 			// DEBUG:
-			console.log(workID);
-			console.log(workIDclass);
-			console.log(workIDid);
-			console.log(htmlVideo);
-			
-		$videoPlayer.slideDown("slow");
+			// console.log(workID);
+			// console.log(workIDclass);
+			// console.log(workIDid);
+			// console.log(htmlVideo);
+
+ 		//$videoPlayer.slideDown("slow");
+ 		$videoPlayer.fadeIn("slow");
 		$body.animate({ scrollTop: 0 }, 600);
 
 		$('.topVideo').hide(function() {
@@ -84,17 +62,32 @@ jQuery(document).ready(function ($) {
 			}
 		});
 	});
+	
+	// Home page carousel.
+	
+	$('.flexslider').flexslider({
+	  animation: "slide",
+	  slideshow: false
+	});
 
-	// $(document).on("change", "#dropdown", function(){
-	// 	var $workItems = $(".workItem");
-	// 	if ($(this).val() === "showAll") {
-	// 	    $workItems.fadeIn("slow").addClass("grid");
-	//     } else  {
-	//         $workItems.hide("fast").removeClass("grid");
-	// 		$('.' + $(this).val()).fadeIn("slow").addClass("grid");
-	// 		$("#videoPlayer").hide();
-	//     }
-	// });
+	$(".flex-direction-nav").add(".flex-control-nav").on('click', function() {
+		$('audio,video').each(function() {
+			this.pause();
+		});
+	});
+	
+	// Dropdown filters.
 
+	$(document).on("change", "#dropdown", function(){
+		console.log ("Dropdown has changed.");
+		var $workItems = $(".workItem");
+		if ($(this).val() === "showAll") {
+		    $workItems.fadeIn("slow").addClass("grid");
+	    } else  {
+	        $workItems.hide("fast").removeClass("grid");
+			$('.' + $(this).val()).fadeIn("slow").addClass("grid");
+			$("#videoPlayer").hide();
+	    }
+	});
 
 });
