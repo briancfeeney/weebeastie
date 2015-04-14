@@ -11,7 +11,7 @@
 				<li>
 					<article class="slideshow video">
 						
-						<video id="video_{{ video.id }}" class="video-js vjs-default-skin video_fullwidth topVideo video_{{ video.id }}" preload="none" controls volume="7" data-setup='{"example_option":true, "autoplay":false, "preload":false}' data-workid="{{ video.id }}" poster="{% for image in video.screenshot.limit(1) %}{{ image.getUrl() }}{% endfor %}">
+						<video id="video_{{ video.id }}" class="video-js vjs-default-skin video_fullwidth topVideo video_{{ video.id }}" controls volume="7" data-setup='{"example_option":true, "autoplay":false, "preload":false}' data-workid="{{ video.id }}" poster="{% for image in video.screenshot.limit(1) %}{{ image.getUrl() }}{% endfor %}">
 							poster="{% for image in entry.screenshot.limit(1) %}{{ image.getUrl() }}{% endfor %}">
 							{% for mp4 in video.videoMP4 %}
 								<source src="{{ mp4.getUrl() }}" type="video/mp4">

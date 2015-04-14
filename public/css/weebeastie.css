@@ -197,6 +197,7 @@ video {
   width: 100%;
   height: auto;
   position: relative;
+  /* .vjs-playing:hover + .video-info, */
 }
 .video .video-info {
   position: absolute;
@@ -229,7 +230,6 @@ video {
     font-size: .7em;
   }
 }
-.video .vjs-playing:hover + .video-info,
 .video .vjs-paused + .video-info {
   opacity: 1;
 }

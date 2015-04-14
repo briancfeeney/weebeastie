@@ -7,10 +7,9 @@
 
 	<!-- Video Player -->
 	<section id="videoPlayer">
-		{% for ourWorkGallery in craft.entries.section('ourWork').find() %}
-			{% set GalleryList = ourWorkGallery.videoSelection %}
-			{% for entry in GalleryList %}
-			<video id="video_{{ entry.id }}" class="video-js vjs-default-skin vjs-big-play-centered topVideo video_{{ entry.id }}" preload="none" controls volume="7" data-setup='{"example_option":true, "autoplay":false, "preload":false}' data-workid="{{ entry.id }}" 
+		{% for ourWorkGallery in craft.entries.section('ourWork') %}
+			{% for entry in ourWorkGallery.videoSelection %}
+			<video id="video_{{ entry.id }}" class="video-js vjs-default-skin vjs-big-play-centered topVideo video_{{ entry.id }}" controls preload="none" volume="7" data-setup='{"example_option":true, "autoplay":false}' data-workid="{{ entry.id }}" 
 			poster="{% for image in entry.screenshot.limit(1) %}{{ image.getUrl() }}{% endfor %}">
 				{% for mp4 in entry.videoMP4 %}
 					<source src="{{ mp4.getUrl() }}" type="video/mp4">
@@ -36,22 +35,17 @@
 	
 	<!-- Video Thumbnails -->
 	<section id="workGallery">
-		{% for ourWorkGallery in craft.entries.section('ourWork').find() %}
-			{% set GalleryList = ourWorkGallery.videoSelection %}
-			{% for entry in GalleryList %}
-			
+		{% for ourWorkGallery in craft.entries.section('ourWork') %}
+			{% for entry in ourWorkGallery.videoSelection %}
 				<div class="workItem {% for option in entry.videoCategories %} {{ option }} {% endfor %} video_{{ entry.id }} grid" data-workid="{{ entry.id }}">
 					<div class="workTitling">
 						<h1>{{ entry.client }}</h1>
 						<h2>{{ entry.projectName }}</h2>
 					</div>
 					{% for image in entry.screenshot.limit(1) %}
-					
 					<img src="{{ image.getUrl('screencap') }}">
 					{% endfor %}
-					
 				</div>
-								
 			{% endfor %}
 		{% endfor %}
 	</section>

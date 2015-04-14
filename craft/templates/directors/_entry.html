@@ -7,7 +7,7 @@
 	<!-- Video Player -->
 	<section id="videoPlayer">
 		{% for entry in entry.videoSelection %}
-			<video id="video_{{ entry.id }}" class="video-js vjs-default-skin topVideo video_{{ entry.id }}" preload="none" controls volume="7" data-setup='{"example_option":true, "autoplay":false, "preload":false}' data-workid="{{ entry.id }}" 
+			<video id="video_{{ entry.id }}" class="video-js vjs-default-skin topVideo video_{{ entry.id }}" controls preload="none" volume="7" data-setup='{"example_option":true, "autoplay":false}' data-workid="{{ entry.id }}" 
 			poster="{% for image in entry.screenshot.limit(1) %}{{ image.getUrl() }}{% endfor %}">
 				{% for mp4 in entry.videoMP4 %}
 					<source src="{{ mp4.getUrl() }}" type="video/mp4">
